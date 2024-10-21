@@ -7,16 +7,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildButtonColumn(color, Icons.call, 'CALL'),
-        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-        _buildButtonColumn(color, Icons.share, 'SHARE'),
-      ],
-    );
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32),
       child: Row(
@@ -38,18 +28,41 @@ class MyApp extends StatelessWidget {
                 ),
                 Text(
                   'Batu, Malang, Indonesia',
-                  style: TextStyle(color: Color.fromARGB(0, 158, 158, 158)),
+                  style: TextStyle(color: Color.fromARGB(255, 158, 158, 158)),
                 ),
               ],
             ),
           ),
           /* soal 3*/
-          Icon(
+          const Icon(
             Icons.star,
             color: Colors.red,
           ),
           const Text("41"),
         ],
+      ),
+    );
+    Color color = Theme.of(context).primaryColor;
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'Lake Victoria, or Victoria Nyanza, Largest lake in Africa and chief reservoir of the Nile River, east-central Africa. The southern half lies in Tanzania,'
+        'the northern half in Uganda; it borders Kenya in the northeast. With an area of 26,828 sq mi (69,484 sq km), '
+        'it is the second largest freshwater lake in the world (after Lake Superior in North America). It is about 210 mi (337 km) long, 150 mi (240 km) wide,'
+        'and up to 270 ft (82 m) deep. Though the Kagera River is its largest tributary, the most important source of water for the lake is rainfall. Its only outlet is the Victoria Nile. '
+        'John Hanning Speke, searching for the source of the Nile in 1858, was the first European to sight it. He named it for Queen Victoria; the Arabs had called it Ukerewe. Henry Morton Stanley circumnavigated it in 1875. '
+        'It became a reservoir when the water level was raised after completion of Owen Falls Dam (now the Nalubaale Dam) in 1954.'
+        '\nWritten by: \n'
+        'Pascalis Sandi / 2241720140 ',
+        softWrap: true,
       ),
     );
     return MaterialApp(
@@ -58,10 +71,17 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
         ),
-        body: Column(
+        body: ListView(
           children: [
+            Image.asset(
+              'images/lake.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
+            textSection,
           ],
         ),
       ),
